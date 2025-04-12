@@ -371,7 +371,7 @@ function renderFavoriteItem(favItem, index) {
         <div class="favorite-item" data-fav-id="${favItem.id}" data-msg-id="${favItem.messageId}" data-index="${index}">
             <div class="fav-header-info">
                 <div class="fav-send-date">${sendDateString}</div>
-                <div class="fav-meta">${favItem.sender} (${favItem.role})</div>
+                <div class="fav-meta">${favItem.sender}</div>
             </div>
             <div class="fav-note" style="${favItem.note ? '' : 'display:none;'}">备注：${favItem.note || ''}</div>
             <div class="fav-preview ${deletedClass}">${previewText}</div>
