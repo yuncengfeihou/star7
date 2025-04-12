@@ -979,8 +979,10 @@ jQuery(async () => {
                 padding: 0 10px;
             }
             #favorites-popup-content .favorites-header h3 {
-                text-align: center;
-                margin: 0;
+                /* 可以根据需要调整标题样式，比如限制最大宽度 */
+                 margin-right: 10px; /* 给标题和按钮之间加点间距 */
+                 flex-grow: 1; /* 让标题占据多余空间，有助于按钮靠右 */
+                 text-align: left; /* 如果希望标题靠左 */
             }
             #favorites-popup-content .favorites-divider {
                 height: 1px;
@@ -1071,13 +1073,12 @@ jQuery(async () => {
                 border-top: 1px solid #444;
             }
 
-            /* --- 新增或修改：为 footer 中的按钮设置更可靠的宽度 --- */
-            #favorites-popup-content .favorites-footer .menu_button {
-                width: auto; /* 推荐：让浏览器根据内容自动决定宽度，通常比 min-content 稳定 */
-                /* 或者可以尝试： */
-                /* width: max-content; */ /* 让按钮足够宽以容纳所有内容不换行 */
-                /* min-width: 100px; */ /* (根据需要调整像素值) */
+
+            #favorites-popup-content .menu_button { /* <--- 更通用的选择器 */
+                width: auto; /* 推荐：让浏览器根据内容自动决定宽度 */
+                /* flex-shrink: 0; */ /* 可选：防止按钮在空间紧张时被压缩，如果 auto 不够的话可以试试 */
             }
+
 
             /* --- 新增：返回按钮样式 --- */
             #${returnButtonId} {
