@@ -1031,7 +1031,9 @@ jQuery(async () => {
             #favorites-popup-content .fav-meta {
                 font-size: 0.8em;
                 color: #aaa;
-                margin-bottom: 5px;
+                text-align: right;      /* 确保文本在自己的空间内右对齐 */
+                flex-grow: 1;           /* 允许元信息占据多余空间 (有助于右对齐) - 可选 */
+                min-width: 0;           /* 与 flex-grow:1 配合，防止溢出问题 - 可选 */
             }
             #favorites-popup-content .fav-note {
                 background-color: rgba(255, 255, 0, 0.1);
@@ -1102,12 +1104,13 @@ jQuery(async () => {
                 /* flex-shrink: 0; */ /* 可选：防止按钮在空间紧张时被压缩，如果 auto 不够的话可以试试 */
             }
 
-             #favorites-popup-content .fav-send-date {
-                font-size: 0.75em; /* 字体稍小 */
-                color: #bbb;       /* 灰色字体 */
-                margin-bottom: 5px; /* 和下面的内容增加一点间距 */
-                text-align: left;   /* 确保左对齐 */
-            } 
+            #favorites-popup-content .fav-send-date {
+                font-size: 0.75em;
+                color: #bbb;
+                text-align: left;
+                /* margin-bottom: 5px; */ /* <--- 移除或注释掉这行 */
+                flex-shrink: 0;         /* 防止日期被过度压缩 (可选) */
+            }
 
             /* --- 新增：返回按钮样式 --- */
             #${returnButtonId} {
