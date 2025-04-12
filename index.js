@@ -334,30 +334,19 @@ function renderFavoriteItem(favItem, index) {
     let message = null;
     let previewText = '';
     let deletedClass = '';
-    let sendDateString = ''; // <-- 新增：用于存储 send_date
+    let sendDateString = '';
 
     if (!isNaN(messageIndex) && context.chat && context.chat[messageIndex]) {
          message = context.chat[messageIndex];
     }
 
-    if (message) { // 仅当消息对象存在时尝试获取 send_date 和 mes
-        // 尝试获取 send_date
+    if (message) {
         if (message.send_date) {
             sendDateString = message.send_date;
         } else {
-            // 如果没有 send_date，可以尝试用 timestamp 生成一个 (可选)
-            // 或者留空/显示默认值
-            // 例如，使用 timestampToMoment (如果需要更灵活的格式):
-            // if (message.timestamp) {
-            //     try {
-            //         sendDateString = timestampToMoment(message.timestamp).format('YYYY-MM-DD HH:mm'); // 自定义格式
-            //     } catch (e) { console.error("Error formatting timestamp:", e); }
-            // } else {
-                   sendDateString = '[时间未知]'; // 或者留空: ''
-            // }
+            sendDateString = '[时间未知]';
         }
 
-        // 获取消息内容预览
         if (message.mes) {
             previewText = message.mes;
             try {
@@ -365,23 +354,27 @@ function renderFavoriteItem(favItem, index) {
                                                 favItem.role === 'user', null, {}, false);
             } catch (e) {
                  console.error(`${pluginName}: Error formatting message preview:`, e);
-                 previewText = message.mes; // Fallback to plain text
+                 previewText = message.mes;
             }
         } else {
-            previewText = '[消息内容为空]'; // 如果消息存在但 mes 为空
+            previewText = '[消息内容为空]';
         }
 
-    } else { // 消息对象不存在 (可能已被删除)
+    } else {
         previewText = '[消息内容不可用或已删除]';
-        sendDateString = '[时间不可用]'; // <-- 消息删除时，时间也不可用
+        sendDateString = '[时间不可用]';
         deletedClass = 'deleted';
     }
 
     // --- 修改返回的 HTML 结构 ---
     return `
         <div class="favorite-item" data-fav-id="${favItem.id}" data-msg-id="${favItem.messageId}" data-index="${index}">
-            <div class="fav-send-date">${sendDateString}</div>
-            <div class="fav-meta">${favItem.sender} (${favItem.role})</div>
+            {/* -- 新增容器 div -- */}
+            <div class="fav-header-info">
+                <div class="fav-send-date">${sendDateString}</div> {/* 日期 */}
+                <div class="fav-meta">${favItem.sender} (${favItem.role})</div> {/* 发送者和角色 */}
+            </div>
+            {/* -- 容器结束 -- */}
             <div class="fav-note" style="${favItem.note ? '' : 'display:none;'}">备注：${favItem.note || ''}</div>
             <div class="fav-preview ${deletedClass}">${previewText}</div>
             <div class="fav-actions">
