@@ -466,11 +466,12 @@ function showFavoritesPopup() {
                         console.log(`${pluginName}: 点击预览按钮，关闭收藏夹弹窗。`);
                     }
                 }
-                else if (target.hasClass('close-popup')) {
-                    favoritesPopup.hide();
-                }
-                else if (target.hasClass('clear-invalid')) {
-                    handleClearInvalidFavorites();
+                // --- 已移除处理 .close-popup 的 else if 分支 ---
+                // else if (target.hasClass('close-popup')) {
+                //     favoritesPopup.hide();
+                // }
+                else if (target.hasClass('clear-invalid')) { // <-- 这个分支仍然保留
+                    handleClearInvalidFavorites();         // <-- 对应的函数调用也保留
                 }
                 else if (target.hasClass('fa-pencil')) {
                     const favItem = target.closest('.favorite-item');
