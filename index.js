@@ -1112,6 +1112,15 @@ jQuery(async () => {
                 flex-shrink: 0;         /* 防止日期被过度压缩 (可选) */
             }
 
+            #favorites-popup-content .fav-header-info {
+                display: flex;              /* 使用 Flexbox 布局 */
+                justify-content: space-between; /* 两端对齐 */
+                align-items: baseline;       
+                margin-bottom: 8px;         /* 和下面内容的间距 */
+                flex-wrap: wrap;            /* 允许换行 */
+                gap: 10px;                  /* 元素间距 */
+            }
+
             /* --- 新增：返回按钮样式 --- */
             #${returnButtonId} {
                 display: inline-block; /* 让按钮占据一行 */ 
