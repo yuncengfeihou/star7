@@ -369,12 +369,10 @@ function renderFavoriteItem(favItem, index) {
     // --- 修改返回的 HTML 结构 ---
     return `
         <div class="favorite-item" data-fav-id="${favItem.id}" data-msg-id="${favItem.messageId}" data-index="${index}">
-            {/* -- 新增容器 div -- */}
             <div class="fav-header-info">
-                <div class="fav-send-date">${sendDateString}</div> {/* 日期 */}
-                <div class="fav-meta">${favItem.sender} (${favItem.role})</div> {/* 发送者和角色 */}
+                <div class="fav-send-date">${sendDateString}</div>
+                <div class="fav-meta">${favItem.sender} (${favItem.role})</div>
             </div>
-            {/* -- 容器结束 -- */}
             <div class="fav-note" style="${favItem.note ? '' : 'display:none;'}">备注：${favItem.note || ''}</div>
             <div class="fav-preview ${deletedClass}">${previewText}</div>
             <div class="fav-actions">
