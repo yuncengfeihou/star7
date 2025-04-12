@@ -1030,6 +1030,8 @@ jQuery(async () => {
                 font-size: 0.8em;
                 color: #aaa;
                 text-align: right;      /* 确保文本在自己的空间内右对齐 */
+                margin-bottom: 5px;
+                margin-top: 0;
                 flex-grow: 1;           /* 允许元信息占据多余空间 (有助于右对齐) - 可选 */
                 min-width: 0;           /* 与 flex-grow:1 配合，防止溢出问题 - 可选 */
             }
