@@ -411,8 +411,8 @@ function updateFavoritesPopup() {
     contentHtml += `
             </div>
             <div class="favorites-footer">
-                <button class="menu_button clear-invalid">清理无效收藏</button>
-                <button class="menu_button close-popup">关闭</button>
+                <!-- 清理无效收藏按钮已根据要求移除 -->
+                <!-- 关闭按钮已根据要求移除 -->
             </div>
         </div>
     `;
