@@ -1083,7 +1083,8 @@ jQuery(async () => {
             /* --- 新增：返回按钮样式 --- */
             #${returnButtonId} {
                 display: inline-block; /* 让按钮占据一行 */ 
-                margin: 10px auto; /* 上下边距10px，左右自动居中 */
+                width: auto;
+                margin: 10px; /* 上下边距10px，左右自动居中 */
                 padding: 8px 15px; /* 内边距 */
                 /* 可以根据需要添加更多样式，例如背景色、边框等 */
                 background-color: var(--SmartThemeBtnBg);
