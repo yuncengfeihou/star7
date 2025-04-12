@@ -1080,6 +1080,12 @@ jQuery(async () => {
                 /* flex-shrink: 0; */ /* 可选：防止按钮在空间紧张时被压缩，如果 auto 不够的话可以试试 */
             }
 
+             #favorites-popup-content .fav-send-date {
+                font-size: 0.75em; /* 字体稍小 */
+                color: #bbb;       /* 灰色字体 */
+                margin-bottom: 5px; /* 和下面的内容增加一点间距 */
+                text-align: left;   /* 确保左对齐 */
+            } 
 
             /* --- 新增：返回按钮样式 --- */
             #${returnButtonId} {
