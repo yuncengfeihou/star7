@@ -1071,6 +1071,14 @@ jQuery(async () => {
                 border-top: 1px solid #444;
             }
 
+            /* --- 新增或修改：为 footer 中的按钮设置更可靠的宽度 --- */
+            #favorites-popup-content .favorites-footer .menu_button {
+                width: auto; /* 推荐：让浏览器根据内容自动决定宽度，通常比 min-content 稳定 */
+                /* 或者可以尝试： */
+                /* width: max-content; */ /* 让按钮足够宽以容纳所有内容不换行 */
+                /* min-width: 100px; */ /* (根据需要调整像素值) */
+            }
+
             /* --- 新增：返回按钮样式 --- */
             #${returnButtonId} {
                 display: block; /* 让按钮占据一行 */
