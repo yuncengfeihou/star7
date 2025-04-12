@@ -377,7 +377,7 @@ function updateFavoritesPopup() {
         return;
     }
     const context = getContext();
-    const chatName = context.characterId ? context.name2 : `群组: ${context.groups?.find(g => g.id === context.groupId)?.name || '未命名群组'}`;
+    const chatName = context.characterId ? context.name2 : `群聊: ${context.groups?.find(g => g.id === context.groupId)?.name || '未命名群聊'}`;
     const totalFavorites = chatMetadata.favorites ? chatMetadata.favorites.length : 0;
     const sortedFavorites = chatMetadata.favorites ? [...chatMetadata.favorites].sort((a, b) => parseInt(a.messageId) - parseInt(b.messageId)) : [];
     const totalPages = Math.max(1, Math.ceil(totalFavorites / itemsPerPage));
@@ -597,7 +597,7 @@ async function handleClearInvalidFavorites() {
 
 /**
  * 确保预览聊天的数据存在
- * @returns {object} 包含当前聊天和角色/群组信息
+ * @returns {object} 包含当前聊天和角色/群聊信息
  */
 function ensurePreviewData() {
     const context = getContext();
@@ -671,7 +671,7 @@ async function triggerReturnNavigation() {
     try {
         toastr.info('正在返回原聊天...');
         if (groupId) {
-            // 对于群组聊天，需要群组ID和聊天ID
+            // 对于群聊聊天，需要群聊ID和聊天ID
             console.log(`${pluginName}: Navigating back to Group Chat: groupId=${groupId}, chatId=${chatId}`);
             await openGroupChat(groupId, chatId);
         } else if (characterId !== undefined) { // 确保 characterId 存在 (即使是 null 或 0)
@@ -722,8 +722,8 @@ async function handlePreviewButtonClick() {
     try {
         // const initialContext = getContext(); // 移到前面获取
         if (!initialContext.groupId && initialContext.characterId === undefined) {
-            console.error(`${pluginName}: 错误: 没有选择角色或群组`);
-            toastr.error('请先选择一个角色或群组');
+            console.error(`${pluginName}: 错误: 没有选择角色或群聊`);
+            toastr.error('请先选择一个角色或群聊');
             previewState.originalContext = null; // 清除无效的上下文
             return;
         }
